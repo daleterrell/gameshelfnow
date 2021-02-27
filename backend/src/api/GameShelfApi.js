@@ -34,13 +34,12 @@ export class GameShelfApi {
     }
 
     async createGame(title) {
-        const response = await axios.post(baseUrl + '/' + titleId);
+        const response = await axios.post(baseUrl + '/', title);
         if (response && response.status === 201) {
             return response.data.response
         } else {
-            // error response
+            console.log("Duly noted. But, I don't get it.")
         }
         return null;
     }
-
 }

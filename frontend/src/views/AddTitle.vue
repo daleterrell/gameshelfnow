@@ -11,5 +11,19 @@
   </div>
 </template>
 
+<script>
+import { GameShelf } from "../api/GameShelf";
+const gameshelfApi = new GameShelfApi();
+export default {
+  data: () => ({
+    title: {
+      Title: "",
+      Designer: {},
+      Publisher: {},
+    },
+  }),
+};
+</script>
+
 
 

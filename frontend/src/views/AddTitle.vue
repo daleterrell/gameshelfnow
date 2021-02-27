@@ -44,6 +44,7 @@
                     <option v-for="designer in designers" :value="designer.id"
                     :key="designer.id"
                     {{designer.firstName}} {{designer.lastName}}
+                    </option>
                 </select>
             </div>
     <div class="field">
@@ -53,6 +54,7 @@
                     <option v-for="publisher in publishers" :value="publisher.id"
                     :key="publisher.id"
                     {{publisher.name}} 
+                    </option>
                 </select>
             </div>
     <div class="field">
@@ -62,6 +64,7 @@
                     <option v-for="title in title" :value="title.id"
                     :key="title.id
                     {{title.title}
+                    </option>
                 </select>
             </div>
         

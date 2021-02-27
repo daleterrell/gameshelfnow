@@ -9,7 +9,7 @@
           id="gameTitle"
           class="input"
           type="text"
-          v-model="game.gameTitle"
+          v-model="game.Title"
           placeholder="Game Title"
         />
       </div>
@@ -37,6 +37,16 @@
           placeholder="Publisher"
         />
       </div>
+     <div class="field">
+        <label class="label">Designer</label>
+            <div class="select">
+                <select v-model="game.designer.id">      
+                    <option v-for="designer in designers" :value="designer.id"
+                    :key="designer.id
+                    {{designer.firstNamer}} {{designer.lastName}}
+                </select>
+            </div>
+        
     </div>
   </div>
 </template>

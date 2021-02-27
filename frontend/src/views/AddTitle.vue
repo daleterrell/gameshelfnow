@@ -21,33 +21,52 @@
           id="Designer"
           class="input"
           type="text"
-          v-model="game.Designer"
+          v-model="boardgame.Designer"
           placeholder="Designer"
         />
       </div>
     </div>
     <div class="field">
-      <label class="label" for="gamePublisher">Publisher</label>
+      <label class="label" for="boardegamePublisher">Publisher</label>
       <div class="controller">
         <input
           id="Publisher"
           class="input"
           type="text"
-          v-model="game.Publisher"
+          v-model="boardgame.Publisher"
           placeholder="Publisher"
         />
       </div>
-     <div class="field">
+    <div class="field">
         <label class="label">Designer</label>
             <div class="select">
-                <select v-model="game.designer.id">      
+                <select v-model="boardgame.designer.id">      
                     <option v-for="designer in designers" :value="designer.id"
-                    :key="designer.id
-                    {{designer.firstNamer}} {{designer.lastName}}
+                    :key="designer.id"
+                    {{designer.firstName}} {{designer.lastName}}
+                </select>
+            </div>
+    <div class="field">
+        <label class="label">Publisher</label>
+            <div class="select">
+                <select v-model="boardgame.publisher.id">      
+                    <option v-for="publisher in publishers" :value="publisher.id"
+                    :key="publisher.id"
+                    {{publisher.name}} 
+                </select>
+            </div>
+    <div class="field">
+        <label class="label">Title</label>
+            <div class="select">
+                <select v-model="boardgame.title.id">      
+                    <option v-for="title in title" :value="title.id"
+                    :key="title.id
+                    {{title.title}
                 </select>
             </div>
         
     </div>
+    
   </div>
 </template>
 
@@ -62,6 +81,32 @@ export default {
       Publisher: {},
     },
   }),
+  methods: {
+    async getDesigner() {
+        const {data} = await this.$http.get('http://localhost:8080/api/designer');
+        console.log('getDesigner() data', data)
+        return data;
+      }
+  },
+   methods: {
+    async getPublisher() {
+        const {data} = await this.$http.get('http://localhost:8080/api/publisher');
+        console.log('getPublisher() data', data)
+        return data;
+      }
+  },
+   methods: {
+    async getTitle() {
+        const {data} = await this.$http.get('http://localhost:8080/api/title');
+        console.log('getTitle() data', data)
+        return data;
+      }
+  },
+  async mounted() {
+      this.designers = await this.getDesigner()
+      this.publishers = await this.getPublisher()
+      this.title = await this.getTitle()
+  }
 };
 </script>
 
